@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
-import { Facebook, Instagram, Twitter, CirclePlus, ShoppingCart, Trash2, X, CreditCard, QrCode } from 'lucide-vue-next';
+import { Facebook, Instagram, Twitter, CirclePlus, ShoppingCart, Trash2, X, CreditCard, QrCode, Globe } from 'lucide-vue-next';
 import QrcodeVue from "qrcode.vue";
 import { BrowserQRCodeReader } from '@zxing/browser'
 import { menu } from '@/refData/menu';
@@ -297,7 +297,7 @@ const isResultOfScan = ref(false)
 
 <template>
 
-    <div class="antialiased bg-[#a0512d8b] text-amber-700-dark">
+    <div class="antialiased bg-[#a0512d8b] text-amber-700-dark text-sm">
         <!-- Cart section -->
         <section :class="isShowingCartItem ? 'fixed' : 'hidden'" class="w-full h-full bg-white/90 top-0 left-0 z-50">
             <div class="flex justify-center items-center w-full h-full">
@@ -326,7 +326,7 @@ const isResultOfScan = ref(false)
                                         <span class="ml-2">{{ item.name }}</span>
                                     </div>
                                     <span>{{ item.size }}</span>
-                                    <div class="flex flex-row px-1 bg-white rounded-full">
+                                    <div class="flex flex-row px-0.5 bg-white rounded-full">
                                         <button class="text-red-600 pr-2" :class="isResultOfScan ? 'hidden' : ''"
                                             @click="subtractPcs(item.id, item.size)">-</button>
                                         <span class="px-1 bg-gray-200"
@@ -539,7 +539,7 @@ const isResultOfScan = ref(false)
                         <button :class="isResultOfScan ? 'hidden' : ''"
                             class="flex items-center gap-2 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition">
                             <Trash2 class="w-5 h-5" />
-                            Remove All
+                            Remove
                         </button>
                         <button :class="isResultOfScan ? '' : 'hidden'"
                             @click="[cartHelper = [], cart = [], isShowingCartItem = false, isResultOfScan = false]"
@@ -616,8 +616,8 @@ const isResultOfScan = ref(false)
                 <div class="flex justify-center items-center">
                     <div
                         class="flex flex-row items-center text-3xl font-extrabold text-amber-700 font-serif tracking-tight">
-                        <img src="/img/logo.jpg" alt="Duo Brew Logo" class="rounded-full h-15 w-auto">
-                        <span class="ml-2">DUO BREW</span>
+                        <img src="/img/logo.jpg" alt="Duo Brew Logo" class="rounded-full h-10 w-auto">
+                        <span class="ml-2 text-xl">DUO BREW</span>
                     </div>
                 </div>
 
@@ -786,13 +786,13 @@ const isResultOfScan = ref(false)
                         </div>
 
                         <!-- Menu Table Section -->
-                        <div class="md:w-2/3 p-6 md:p-8">
-                            <h2 class="text-3xl font-bold font-serif text-amber-700 mb-6">{{ category.name }}</h2>
+                        <div class="md:w-2/3 md:p-8">
+                            <h2 class="text-3xl font-bold font-serif text-amber-700 my-6 ml-4">{{ category.name }}</h2>
                             <div class="overflow-x-hidden min-h-100 max-h-165">
                                 <table class="w-full text-left">
                                     <thead>
                                         <tr class="border-b-2 border-[#D3C5B5]">
-                                            <th class="py-3 pr-4 font-semibold">Item</th>
+                                            <th class="py-3 px-6 font-semibold text-xl">Item</th>
                                             <th v-if="category.sizes" v-for="size in category.sizes" :key="size"
                                                 class="py-3 px-2 md:px-4 font-semibold text-center">{{ size }}</th>
                                             <th v-else class="py-3 px-4 font-semibold text-right">Price</th>
@@ -871,19 +871,22 @@ const isResultOfScan = ref(false)
                         <p class="mt-2 text-amber-100">Your daily dose of delight.</p>
                     </div>
                     <div class="flex mt-6 md:mt-0 space-x-6">
-                        <a href="#" class="hover:text-amber-200 transition-colors">
+                        <a href="https://www.facebook.com/aldrin.ibarra.2024" class="hover:text-amber-200 transition-colors">
                             <Facebook :size="24" />
                         </a>
                         <a href="#" class="hover:text-amber-200 transition-colors">
                             <Instagram :size="24" />
                         </a>
-                        <a href="#" class="hover:text-amber-200 transition-colors">
-                            <Twitter :size="24" />
+                        <a href="https://www.albaytourist.com/" class="hover:text-amber-200 transition-colors">
+                            <Globe :size="24" />
                         </a>
                     </div>
                 </div>
                 <div class="mt-8 border-t border-amber-600 pt-6 text-center text-sm text-amber-200">
                     <p>&copy; 2024 DUOBREW. All Rights Reserved.</p>
+                    <p>&copy; DEVELOPED BY: <a href="https://www.facebook.com/aldrin.ibarra.2024" class="font-bold text-white">Aldrin Belardo</a></p>
+                    <p>&copy; ALSO VIST NOW: <a href="https://www.albaytourist.com/" class="font-bold text-white">Albay Tourist</a></p>
+                    
                 </div>
             </div>
         </footer>
