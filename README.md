@@ -27,6 +27,7 @@ bun dev
 ```
 
 ### Type-Check, Compile and Minify for Production
+kaantok beh
 
 ```sh
 bun run build
